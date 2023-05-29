@@ -1,0 +1,82 @@
+{
+	"name": "vn-payments",
+	"version": "1.1.0",
+	"description": "Helpers for various Payment Gateway in Vietnam",
+	"repository": "https://github.com/naustudio/vn-payments",
+	"author": "Nau Studio <contact@naustud.io>",
+	"contributors": [
+		"Thanh Tran <thanh@naustud.io>"
+	],
+	"types": "./src/index.d.ts",
+	"license": "Apache-2.0",
+	"main": "dist/index.js",
+	"engines": {
+		"node": ">=6.9.1",
+		"npm": ">=3.10.0"
+	},
+	"scripts": {
+		"prepublish": "npm run clean && npm run build",
+		"start": "nodemon example/index.js --exec \"node -r babel-register\"",
+		"clean": "rimraf dist",
+		"build": "eslint src test && jest --config test/jest.config.js --coverage && npm run clean && mkdir -p dist && babel src -s -D -d dist && codecov",
+		"test": "jest --watch --coverage",
+		"lint": "esw src test example",
+		"doc": "jsdoc -c jsdoc.config.json"
+	},
+	"keywords": [
+		"babel",
+		"es6",
+		"es2015",
+		"jest",
+		"payment gateway",
+		"onepay",
+		"vnpay",
+		"sohapay",
+		"alepay",
+		"123pay",
+		"nganluong",
+		"vietnam"
+	],
+	"dependencies": {
+		"node-fetch": "^2.3.0",
+		"simpl-schema": "^1.5.5",
+		"xml2js": "^0.4.19"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-eslint": "^10.0.1",
+		"babel-jest": "^24.7.1",
+		"babel-preset-env": "^1.7.0",
+		"babel-register": "^6.26.0",
+		"codecov": "^3.3.0",
+		"eslint": "^5.16.0",
+		"eslint-config-nau": "^13.2.0",
+		"eslint-plugin-import": "^2.17.2",
+		"eslint-plugin-jest": "^22.5.1",
+		"eslint-watch": "^5.0.1",
+		"jest": "^24.7.1",
+		"jsdoc": "^3.5.5",
+		"nodemon": "^1.18.11",
+		"rimraf": "^2.6.3",
+		"supertest": "^4.0.2"
+	},
+	"babel": {
+		"presets": [
+			[
+				"env",
+				{
+					"targets": {
+						"node": "current"
+					}
+				}
+			]
+		]
+	},
+	"jest": {
+		"testEnvironment": "node"
+	},
+	"files": [
+		"src/",
+		"dist/"
+	]
+}
